@@ -4,18 +4,23 @@
 {% block title %}Pick{% endblock %}
 
 {% block header %}
-  <h2><span class="teal-text text-darken-4">Which One?</span></h2>
+  <p class="flow-text"><strong>Which title sounds better?</strong></p>
 {% endblock %}
 
 {% block content %}
-  {% for title in titles %}
-    <form action="{% url 'titles:picked' %}" method="post">
-      {% csrf_token %}
+  <div class="row">
+    {% for title in titles %}
+      <div class="col s12 m6">
+        <form action="{% url 'titles:picked' %}" method="post"
+        class="inline-block pick">
+          {% csrf_token %}
 
-      <input type="hidden" name="picked" value="{{ title.id }}">
-      <button type="submit" class="btn btn-large teal accent-4">
-        {{ title.text }}
-      </button>
-    </form>
-  {% endfor %}
+          <input type="hidden" name="picked" value="{{ title.id }}">
+
+          <input type="submit" value="{{ title.text }}"
+          class="black-text card-panel white pick">
+        </form>
+      </div>
+    {% endfor %}
+  </div>
 {% endblock %}

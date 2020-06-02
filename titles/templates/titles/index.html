@@ -4,20 +4,13 @@
 {% block title %}Titles{% endblock %}
 
 {% block header %}
-  <h2><span class="teal-text text-darken-4">All titles</span></h2>
+  <p class="flow-text"><strong>Start right now!</strong></p>
 {% endblock %}
 
 {% block content %}
   <a href="{% url 'titles:pick' %}"
   class="btn btn-large teal accent-4">
-    Start Picking
+    Start Picking from <b>{{ titles.count }}</b> titles
     <i class="material-icons right">chevron_right</i>
   </a>
-
-  <!-- to be removed -->
-  {% for title in titles %}
-    <p>{{ title.text }}</p>
-  {% empty %}
-    <p>There are no questions...</p>
-  {% endfor %}
 {% endblock %}

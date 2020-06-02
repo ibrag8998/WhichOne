@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
   rel="stylesheet">
   <link type="text/css" rel="stylesheet" 
@@ -22,7 +23,9 @@
 
   <nav class="teal accent-4">
     <div class="nav-wrapper container">
-      <a href="{% url 'titles:index' %}" class="brand-logo">Titles</a>
+      <a href="{% url 'titles:index' %}" class="brand-logo">
+        <img src="{% static 'imgs/logo.png' %}" alt="Which One?">
+      </a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         {% if user.is_authenticated %}
           <li><a href="{% url 'titles:index' %}">{{ user.username }}</a></li>
@@ -38,8 +41,8 @@
   <div class="container">
     <div class="row">
       <div class="col s12 m9 l8">
-        <div class="row">
-          <header>
+        <div class="row" style="margin-bottom: 0;">
+          <header class="not-for-small">
             {% block header %}`header` not overriden{% endblock %}
           </header>
         </div>
@@ -54,7 +57,7 @@
       </div>
 
       <div class="col s0 m3 l4">
-        <div class="sidebar">
+        <div class="sidebar not-for-small">
           The sidebar
         </div>
       </div>

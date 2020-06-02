@@ -14,11 +14,15 @@ class IndexServiceMixin:
 class PickServiceMixin:
     model = None
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.all_titles = self.model.objects.all()
+
     def get(self, request, *args, **kwargs):
         """ In case there less than 10 titles in whole database, user should
         be redirected to index page and flash message will be sent
         """
-        if self.model.objects.all().count() < 10:
+        if self.all_titles.count() < 10:
             messages.info(request,
                           'Sorry, there are no enough titles in database :(')
             return redirect('titles:index')
@@ -27,7 +31,7 @@ class PickServiceMixin:
 
     def get_queryset(self):
         """ Return two random titles for user to pick one """
-        two_random = self.model.objects.order_by('?')[:2]
+        two_random = self.all_titles.random(2)
         for t in two_random:
             t.appearances += 1
             t.save()
@@ -58,10 +62,3 @@ class PickedServiceMixin:
 def add_sample_titles(n=10):
     for i in range(1, n + 1):
         Title.objects.create(text=f'Sample title #{i}')
-
-
-def picked(title_id, model):
-    if title_id is None:
-        return redirect('titles:index')
-
-    t = model.objects.get(pk=title_id)

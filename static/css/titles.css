@@ -1,0 +1,9 @@
+form.pick {
+  width: 100%;
+}
+input[type="submit"].pick {
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}

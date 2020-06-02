@@ -1,0 +1,23 @@
+{% extends 'wrapper.html' %}
+
+
+{% block title %}Titles{% endblock %}
+
+{% block header %}
+  <h2><span class="teal-text text-darken-4">All titles</span></h2>
+{% endblock %}
+
+{% block content %}
+  <a href="{% url 'titles:pick' %}"
+  class="btn btn-large teal accent-4">
+    Start Picking
+    <i class="material-icons right">chevron_right</i>
+  </a>
+
+  <!-- to be removed -->
+  {% for title in titles %}
+    <p>{{ title.text }}</p>
+  {% empty %}
+    <p>There are no questions...</p>
+  {% endfor %}
+{% endblock %}

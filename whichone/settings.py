@@ -29,8 +29,15 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # core
     'titles.apps.TitlesConfig',
     'users.apps.UsersConfig',
+
+    # reusables
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
     # django.contrib
     'django.contrib.admin',
     'django.contrib.auth',
@@ -38,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 ]
 
 MIDDLEWARE = [
@@ -101,6 +109,13 @@ AUTH_PASSWORD_VALIDATORS = [
         'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+SITE_ID = 1
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/

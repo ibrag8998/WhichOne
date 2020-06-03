@@ -1,0 +1,20 @@
+{% extends 'wrapper.html' %}
+
+
+{% block title %}Sign In{% endblock %}
+
+{% block header %}
+  <h2><span class="teal-text text-darken-4">
+    Sign In
+  </span></h2>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    {% include 'includes/users/auth_form.html' %}
+    <a href="{% url 'users:signup' %}"
+    class="btn waves-effect waves-light teal">
+      Sign Up Instead
+    </a>
+  </form>
+{% endblock %}

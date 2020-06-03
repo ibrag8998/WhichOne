@@ -29,17 +29,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    # core
     'titles.apps.TitlesConfig',
     'users.apps.UsersConfig',
-
-    # reusables
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-
     # django.contrib
-    'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -47,8 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
-
-SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -112,17 +102,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend',
-]
-
-AUTH_USER_MODEL = 'users.User'
-
-ACCOUNT_EMAIL_REQUIRED = True
-
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
@@ -142,6 +121,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+AUTH_USER_MODEL = 'users.User'
 
 LOGIN_URL = 'users:signin'
 

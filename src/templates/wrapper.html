@@ -29,10 +29,10 @@
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         {% if user.is_authenticated %}
           <li><a href="{% url 'titles:index' %}">{{ user.username }}</a></li>
-          <li><a href="{% url 'users:logout' %}">Log Out</a></li>
+          <li><a href="{% url 'allauth:logout' %}">Log Out</a></li>
         {% else %}
-          <li><a href="{% url 'users:signup' %}">Sign Up</a></li>
-          <li><a href="{% url 'users:signin' %}">Sign In</a></li>
+          <li><a href="{% url 'allauth:signup' %}">Sign Up</a></li>
+          <li><a href="{% url 'allauth:signin' %}">Sign In</a></li>
         {% endif %}
       </ul>
     </div>

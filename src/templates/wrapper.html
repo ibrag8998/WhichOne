@@ -17,7 +17,8 @@
     `title` not overriden
   {% endblock %} - Which One?</title>
 
-  <script src="{% static 'js/materialize.js' %}"></script>
+  <script type="text/javascript"
+  src="{% static 'js/materialize.js' %}"></script>
 </head>
 <body>
 
@@ -28,11 +29,14 @@
       </a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         {% if user.is_authenticated %}
-          <li><a href="{% url 'titles:index' %}">{{ user.username }}</a></li>
-          <li><a href="{% url 'allauth:logout' %}">Log Out</a></li>
+          <li><a href="{% url 'titles:add' %}">Add Title</a></li>
+          <li><a href="{% url 'users:my_profile' %}">
+            {{ user.username }}
+          </a></li>
+          <li><a href="{% url 'account_logout' %}">Log Out</a></li>
         {% else %}
-          <li><a href="{% url 'allauth:signup' %}">Sign Up</a></li>
-          <li><a href="{% url 'allauth:signin' %}">Sign In</a></li>
+          <li><a href="{% url 'account_signup' %}">Sign Up</a></li>
+          <li><a href="{% url 'account_login' %}">Log In</a></li>
         {% endif %}
       </ul>
     </div>

@@ -56,6 +56,10 @@ class PickedServiceMixin:
         t.picks += 1
         t.save()
 
+        u = request.user
+        u.picks.add(t)
+        u.save()
+
         return redirect('titles:pick')
 
 

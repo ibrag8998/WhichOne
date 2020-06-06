@@ -1,0 +1,44 @@
+{% extends 'wrapper.html' %}
+
+
+{% block title %}{{ user.username }}{% endblock %}
+
+
+{% block header %}
+  <p class="flow-text"><strong>{{ user.username }} - Profile</strong></p>
+{% endblock %}
+
+{% block content %}
+  <div class="my-titles">
+    <div class="row">
+      <ul class="collection with-header">
+        <li class="collection-header"><h4>My Titles</h4></li>
+        <li class="collection-item">
+          <div>
+            placeholder
+            <div class="secondary-content">
+              101
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="my-picks">
+    <div class="row">
+      <ul class="collection with-header">
+        <li class="collection-header"><h4>My Picks</h4></li>
+        {% for pick in user.picks.all %}
+          <li class="collection-item">
+            <div>
+              {{ pick.text }}
+              <div class="secondary-content">
+                {{ pick.winrate }}%
+              </div>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+{% endblock %}

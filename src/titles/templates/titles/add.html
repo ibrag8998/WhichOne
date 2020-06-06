@@ -1,0 +1,19 @@
+{% extends 'wrapper.html' %}
+
+
+{% block title %}Add Title{% endblock %}
+
+{% block header %}
+  <p class="flow-text"><strong>Add Title</strong></p>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit"
+    class="btn btn-large waves-effect waves-light">
+      Add <i class="material-icons right">add</i>
+    </button>
+  </form>
+{% endblock %}

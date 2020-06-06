@@ -30,8 +30,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     # core
-    'titles.apps.TitlesConfig',
-    'users.apps.UsersConfig',
+    'titles',
+    'users',
 
     # reusables
     'allauth',
@@ -139,6 +139,6 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 AUTH_USER_MODEL = 'users.User'
 
-LOGIN_URL = 'users:signin'
+LOGIN_URL = 'account_login'
 
 LOGIN_REDIRECT_URL = 'titles:index'
